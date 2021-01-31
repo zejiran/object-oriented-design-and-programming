@@ -444,4 +444,25 @@ public class CalculadoraEstadisticas
 		return nombres;
 	}
 
+	/**
+	 * Retorna el nombre del país al que pertenece un atleta
+	 * 
+	 * @param nombreAtleta El nombre del atleta
+	 * @return El nombre del país correspondiente
+	 * 
+	 *         Si el nombre no corresponde al de ningún atleta,
+	 *         retorna una cadena vacía.
+	 *         
+	 */
+	public String paisDeUnAtleta(String nombreAtleta)
+	{
+		String pais = "";
+		Atleta elAtleta = buscarAtleta(nombreAtleta);
+		if (elAtleta != null)
+		{
+			pais = elAtleta.darPais().darNombre();
+		}
+
+		return pais;
+	}
 }
