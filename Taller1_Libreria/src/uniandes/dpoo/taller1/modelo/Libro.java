@@ -1,5 +1,6 @@
 package uniandes.dpoo.taller1.modelo;
 
+
 /**
  * Esta clase agrupa la información sobre un libro disponible en la librería
  */
@@ -33,8 +34,8 @@ public class Libro
 	/**
 	 * Imagen con la portada del libro
 	 */
-	// TODO Parte 1 - agregar una asociación a la clase Imagen llamada portada
-
+	private Imagen portada;
+	
 	// ************************************************************************
 	// Constructores
 	// ************************************************************************
@@ -60,9 +61,6 @@ public class Libro
 		calificacion = laCalificacion;
 		categoria = laCategoria;
 		categoria.agregarLibro(this);
-
-		// TODO Parte 1 - Acá no hay nada que hacer con 'portada' porque, por defecto,
-		// un atributo tiene valor null
 	}
 
 	// ************************************************************************
@@ -119,8 +117,12 @@ public class Libro
 	 */
 	public Imagen darPortada()
 	{
-		// TODO Parte 1 - completar el método de acuerdo a la documentación
-		return null;
+		Imagen portadaDefecto = new Imagen("./data/imagenes/missing.png", 85, 85);
+		if (portada != null) {
+			return this.portada;
+		} else {
+			return portadaDefecto;
+		}
 	}
 
 	// ************************************************************************
@@ -134,7 +136,7 @@ public class Libro
 	 */
 	public void cambiarPortada(Imagen nuevaPortada)
 	{
-		// TODO Parte 1 - completar el método de acuerdo a la documentación
+		portada = nuevaPortada;
 	}
 
 	/**
@@ -145,8 +147,12 @@ public class Libro
 	 */
 	public boolean tienePortada()
 	{
-		// TODO Parte 1 - completar el método de acuerdo a la documentación
-		return false;
+		if (portada != null) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	@Override
