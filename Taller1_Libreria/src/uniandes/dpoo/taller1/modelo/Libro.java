@@ -150,7 +150,9 @@ public class Libro
 		if (portada != null) {
 			return false;
 		}
-		return false;
+		else {
+			return true;
+		}
 	}
 
 	@Override
