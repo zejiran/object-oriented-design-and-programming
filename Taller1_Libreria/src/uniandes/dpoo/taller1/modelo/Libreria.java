@@ -13,8 +13,7 @@ import java.util.ArrayList;
  * Adicionalmente esta clase es capaz de calcular y hacer búsquedas sobre las
  * categorías y sobre el catálogo de libros.
  */
-public class Libreria
-{
+public class Libreria {
 	// ************************************************************************
 	// Atributos
 	// ************************************************************************
@@ -22,10 +21,7 @@ public class Libreria
 	/**
 	 * El arreglo con las categorías que hay en la librería
 	 */
-	/*
-	 * TODO Parte 2 - agregar una asociación a la clase Categoria llamada
-	 * categorias, que sea un arreglo de Categoria
-	 */
+	private Categoria[] categorias;
 
 	/**
 	 * Una lista con los libros disponibles en la librería
@@ -50,11 +46,8 @@ public class Libreria
 	 * @throws IOException Lanza esta excepción si hay algún problema leyendo un
 	 *                     archivo
 	 */
-	public Libreria(String nombreArchivoCategorias, String nombreArchivoLibros) throws IOException
-	{
-		// this.categorias = cargarCategorias(nombreArchivoCategorias);
-		// TODO Parte 2 - después de crear el atributo categoria, quite el comentario
-		// sobre la línea anterior
+	public Libreria(String nombreArchivoCategorias, String nombreArchivoLibros) throws IOException {
+		this.categorias = cargarCategorias(nombreArchivoCategorias);
 
 		// this.catalogo = cargarCatalogo(nombreArchivoLibros);
 		// TODO Parte 4 - después de crear el atributo catalogo, quite el comentario
@@ -70,10 +63,8 @@ public class Libreria
 	 * 
 	 * @return categorias
 	 */
-	public Categoria[] darCategorias()
-	{
-		// TODO Parte 2 - completar el método de acuerdo a la documentación
-		return null;
+	public Categoria[] darCategorias() {
+		return this.categorias;
 	}
 
 	/**
@@ -81,8 +72,7 @@ public class Libreria
 	 * 
 	 * @return catalogo
 	 */
-	public ArrayList<Libro> darLibros()
-	{
+	public ArrayList<Libro> darLibros() {
 		// TODO Parte 4 - completar el método de acuerdo a la documentación
 		return null;
 	}
@@ -100,16 +90,14 @@ public class Libreria
 	 * @throws IOException Se lanza esta excepción si hay algún problema leyendo del
 	 *                     archivo
 	 */
-	private Categoria[] cargarCategorias(String nombreArchivoCategorias) throws IOException
-	{
+	private Categoria[] cargarCategorias(String nombreArchivoCategorias) throws IOException {
 		ArrayList<Categoria> listaCategorias = new ArrayList<Categoria>();
 
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivoCategorias));
 		String linea = br.readLine(); // Ignorar la primera línea porque tiene los títulos
 
 		linea = br.readLine();
-		while (linea != null)
-		{
+		while (linea != null) {
 			String[] partes = linea.trim().split(",");
 			String nombreCat = partes[0];
 			boolean esFiccion = partes[1].equals("true");
@@ -124,8 +112,7 @@ public class Libreria
 
 		// Convertir la lista de categorías a un arreglo
 		Categoria[] arregloCategorias = new Categoria[listaCategorias.size()];
-		for (int i = 0; i < listaCategorias.size(); i++)
-		{
+		for (int i = 0; i < listaCategorias.size(); i++) {
 			arregloCategorias[i] = listaCategorias.get(i);
 		}
 
@@ -144,8 +131,7 @@ public class Libreria
 	 * @throws IOException Se lanza esta excepción si hay algún problema leyendo del
 	 *                     archivo
 	 */
-	private ArrayList<Libro> cargarCatalogo(String nombreArchivoLibros) throws IOException
-	{
+	private ArrayList<Libro> cargarCatalogo(String nombreArchivoLibros) throws IOException {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
 
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivoLibros));
@@ -153,8 +139,7 @@ public class Libreria
 										// Titulo,Autor,Calificacion,Categoria,Portada,Ancho,Alto
 
 		linea = br.readLine();
-		while (linea != null)
-		{
+		while (linea != null) {
 			String[] partes = linea.trim().split(",");
 			String elTitulo = partes[0];
 			String elAutor = partes[1];
@@ -170,8 +155,7 @@ public class Libreria
 			libros.add(nuevo);
 
 			// Si existe el archivo de la portada, ponérselo al libro
-			if (existeArchivo(archivoPortada))
-			{
+			if (existeArchivo(archivoPortada)) {
 				Imagen portada = new Imagen(archivoPortada, ancho, alto);
 				nuevo.cambiarPortada(portada);
 			}
@@ -190,10 +174,20 @@ public class Libreria
 	 * @param nombreCategoria El nombre de la categoría buscada
 	 * @return La categoría que tiene el nombre dado
 	 */
-	private Categoria buscarCategoria(String nombreCategoria)
-	{
-		// TODO Parte 2 - completar el método de acuerdo a la documentación
-		return null;
+	private Categoria buscarCategoria(String nombreCategoria) {
+		Categoria categoriaBuscada = null;
+
+		int i = 0;
+		while (i < this.categorias.length && categoriaBuscada.equals(null)) {
+			Categoria actual = this.categorias[i];
+			if (actual.darNombre() == nombreCategoria) {
+				categoriaBuscada = actual;
+			}
+
+			i++;
+		}
+
+		return categoriaBuscada;
 	}
 
 	/**
@@ -203,8 +197,7 @@ public class Libreria
 	 * @param nombreArchivo El nombre del archivo que se va a buscar.
 	 * @return
 	 */
-	private boolean existeArchivo(String nombreArchivo)
-	{
+	private boolean existeArchivo(String nombreArchivo) {
 		File archivo = new File("./data/" + nombreArchivo);
 		return archivo.exists();
 	}
@@ -216,19 +209,11 @@ public class Libreria
 	 * @param nombreCategoria El nombre de la categoría de interés
 	 * @return Una lista donde todos los libros pertenecen a la categoría indicada
 	 */
-	public ArrayList<Libro> darLibros(String nombreCategoria)
-	{
+	public ArrayList<Libro> darLibros(String nombreCategoria) {
 		ArrayList<Libro> seleccionados = new ArrayList<Libro>();
 
-		/*
-		 * TODO Parte 2 - recorra el arreglo de categorias, haciendo un recorrido
-		 * parcial. Cuando encuentre la categoría con el nombre dado, agregue todos los
-		 * libros de esa categoría a la lista de libros que se encuentra en la variable
-		 * 'seleccionados'.
-		 * 
-		 * Para agregar muchos elementos a una lista con facilidad puede utilizar el
-		 * método addAll.
-		 */
+		Categoria categoriaEncontrada = this.buscarCategoria(nombreCategoria);
+		seleccionados.addAll(categoriaEncontrada.darLibros());
 
 		return seleccionados;
 	}
@@ -240,8 +225,7 @@ public class Libreria
 	 * @return Retorna un libro con el título indicado o null si no se encontró un
 	 *         libro con ese título
 	 */
-	public Libro buscarLibro(String tituloLibro)
-	{
+	public Libro buscarLibro(String tituloLibro) {
 		// TODO Parte 4 - completar el método de acuerdo a la documentación
 		// Debe recorrer la lista de libros (no tiene sentido recorrer las categorias)
 		return null;
@@ -259,19 +243,12 @@ public class Libreria
 	 * @return Una lista con todos los libros cuyo autor coincida con la cadena
 	 *         indicada
 	 */
-	public ArrayList<Libro> buscarLibrosAutor(String cadenaAutor)
-	{
+	public ArrayList<Libro> buscarLibrosAutor(String cadenaAutor) {
 		ArrayList<Libro> librosAutor = new ArrayList<Libro>();
 
-		/*
-		 * TODO Parte 2 - recorra el arreglo de categorias, haciendo un recorrido total.
-		 * En cada categoría busque los libros que haya en esa categoría y que hayan
-		 * sido escritos por el autor indicado. Agregue esos libros a la lista de libros
-		 * que se encuentra en la variable 'librosAutor'.
-		 * 
-		 * Para agregar muchos elementos a una lista con facilidad puede utilizar el
-		 * método addAll.
-		 */
+		for (Categoria actual : this.categorias) {
+			librosAutor.addAll(actual.buscarLibrosDeAutor(cadenaAutor));
+		}
 
 		return librosAutor;
 	}
@@ -287,18 +264,14 @@ public class Libreria
 	 *         autor indicado. Si no hay un libro del autor en ninguna categoría,
 	 *         retorna una lista vacía.
 	 */
-	public ArrayList<Categoria> buscarCategoriasAutor(String nombreAutor)
-	{
+	public ArrayList<Categoria> buscarCategoriasAutor(String nombreAutor) {
 		ArrayList<Categoria> resultado = new ArrayList<Categoria>();
 
-		/*
-		 * TODO Parte 2 - recorra el arreglo de categorias, haciendo un recorrido total.
-		 * En cada categoría, busque si en esa categoría hay libros que hayan sido
-		 * escritos por el autor indicado. Si es así, agregue la categoría a la lista de
-		 * categorías que se encuentra en la variable 'resultado'.
-		 * 
-		 * Para agregar un elemento a una lista puede utilizar el método add.
-		 */
+		for (Categoria actual : this.categorias) {
+			if (actual.hayLibroDeAutor(nombreAutor)) {
+				resultado.add(actual);
+			}
+		}
 
 		return resultado;
 	}
@@ -309,8 +282,7 @@ public class Libreria
 	 * 
 	 * @return Calificación promedio del catálogo
 	 */
-	public double calificacionPromedio()
-	{
+	public double calificacionPromedio() {
 		// TODO Parte 4 - completar el método de acuerdo a la documentación
 		// Debe recorrer la lista de libros (no tiene sentido recorrer las categorias)
 		return 0.0;
@@ -323,10 +295,19 @@ public class Libreria
 	 *         que estén empatadas en el primer lugar. Si no hay ningún libro,
 	 *         retorna null.
 	 */
-	public Categoria categoriaConMasLibros()
-	{
-		// TODO Parte 2 - completar el método de acuerdo a la documentación
-		return null;
+	public Categoria categoriaConMasLibros() {
+		Categoria categoriaConMasLibros = null;
+
+		for (int i = 0; i < this.categorias.length; i++) {
+			Categoria actual = this.categorias[i];
+			if (categoriaConMasLibros.equals(null)) {
+				categoriaConMasLibros = actual;
+			} else if (actual.contarLibrosEnCategoria() > categoriaConMasLibros.contarLibrosEnCategoria()) {
+				categoriaConMasLibros = actual;
+			}
+		}
+
+		return categoriaConMasLibros;
 	}
 
 	/**
@@ -335,10 +316,18 @@ public class Libreria
 	 * 
 	 * @return Categoría con los mejores libros
 	 */
-	public Categoria categoriaConMejoresLibros()
-	{
-		// TODO Parte 2 - completar el método de acuerdo a la documentación
-		return null;
+	public Categoria categoriaConMejoresLibros() {
+		Categoria categoriaConMayorPromedio = null;
+
+		for (Categoria actual : this.categorias) {
+			if (categoriaConMayorPromedio.equals(null)) {
+				categoriaConMayorPromedio = actual;
+			} else if (actual.calificacionPromedio() > categoriaConMayorPromedio.calificacionPromedio()) {
+				categoriaConMayorPromedio = actual;
+			}
+		}
+
+		return categoriaConMayorPromedio;
 	}
 
 	/**
@@ -346,8 +335,7 @@ public class Libreria
 	 * 
 	 * @return Cantidad de libros sin portada
 	 */
-	public int contarLibrosSinPortada()
-	{
+	public int contarLibrosSinPortada() {
 		// TODO Parte 4 - completar el método de acuerdo a la documentación
 		// Debe recorrer la lista de libros (no tiene sentido recorrer las categorias)
 		return 0;
@@ -359,8 +347,7 @@ public class Libreria
 	 * @return Retorna true si hay algún autor que tenga al menos un libro en dos
 	 *         categorías diferentes. Retorna false en caso contrario.
 	 */
-	public boolean hayAutorEnVariasCategorias()
-	{
+	public boolean hayAutorEnVariasCategorias() {
 		// TODO Parte 4 - completar el método de acuerdo a la documentación
 		// Implemente el método como considere conveniente (recorriendo primero las
 		// categorías o los libros)
