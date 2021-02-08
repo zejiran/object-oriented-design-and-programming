@@ -119,7 +119,7 @@ public class Libro
 	{
 		Imagen portadaDefecto = new Imagen("./data/imagenes/missing.png", 85, 85);
 		if (portada != null) {
-			return portada;
+			return this.portada;
 		} else {
 			return portadaDefecto;
 		}
