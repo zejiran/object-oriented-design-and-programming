@@ -1,11 +1,9 @@
 package uniandes.dpoo.taller1.modelo;
 
-
 /**
  * Esta clase agrupa la información sobre un libro disponible en la librería
  */
-public class Libro
-{
+public class Libro {
 
 	// ************************************************************************
 	// Atributos
@@ -35,7 +33,7 @@ public class Libro
 	 * Imagen con la portada del libro
 	 */
 	private Imagen portada;
-	
+
 	// ************************************************************************
 	// Constructores
 	// ************************************************************************
@@ -54,8 +52,7 @@ public class Libro
 	 *                       bookdepository.com
 	 * @param laCategoria    Categoría a la que pertenece el libro
 	 */
-	public Libro(String elTitulo, String elAutor, double laCalificacion, Categoria laCategoria)
-	{
+	public Libro(String elTitulo, String elAutor, double laCalificacion, Categoria laCategoria) {
 		titulo = elTitulo;
 		autor = elAutor;
 		calificacion = laCalificacion;
@@ -72,8 +69,7 @@ public class Libro
 	 * 
 	 * @return titulo
 	 */
-	public String darTitulo()
-	{
+	public String darTitulo() {
 		return titulo;
 	}
 
@@ -82,8 +78,7 @@ public class Libro
 	 * 
 	 * @return autor
 	 */
-	public String darAutor()
-	{
+	public String darAutor() {
 		return autor;
 	}
 
@@ -92,8 +87,7 @@ public class Libro
 	 * 
 	 * @return calificacion
 	 */
-	public double darCalificacion()
-	{
+	public double darCalificacion() {
 		return calificacion;
 	}
 
@@ -102,8 +96,7 @@ public class Libro
 	 * 
 	 * @return categoria
 	 */
-	public Categoria darCategoria()
-	{
+	public Categoria darCategoria() {
 		return categoria;
 	}
 
@@ -115,14 +108,13 @@ public class Libro
 	 * @return La portada del libro o un objeto de tipo Imagen con la imagen del
 	 *         archivo "./data/imagenes/missing.png"
 	 */
-	public Imagen darPortada()
-	{
+	public Imagen darPortada() {
 		Imagen portadaDefecto = new Imagen("./data/imagenes/missing.png", 85, 85);
 		if (portada != null) {
 			return this.portada;
-		} else {
-			return portadaDefecto;
 		}
+
+		return portadaDefecto;
 	}
 
 	// ************************************************************************
@@ -134,9 +126,8 @@ public class Libro
 	 * 
 	 * @param nuevaPortada Nueva portada para el libro
 	 */
-	public void cambiarPortada(Imagen nuevaPortada)
-	{
-		portada = nuevaPortada;
+	public void cambiarPortada(Imagen nuevaPortada) {
+		this.portada = nuevaPortada;
 	}
 
 	/**
@@ -145,19 +136,16 @@ public class Libro
 	 * @return Retorna true si el libro tiene una portada. Retorna false en caso
 	 *         contrario.
 	 */
-	public boolean tienePortada()
-	{
-		if (portada != null) {
+	public boolean tienePortada() {
+		if (portada == null) {
 			return false;
 		}
-		else {
-			return true;
-		}
+
+		return true;
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return titulo + " (" + autor + ")";
 	}
 }
