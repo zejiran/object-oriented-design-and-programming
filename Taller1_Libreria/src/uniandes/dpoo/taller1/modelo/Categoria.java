@@ -132,7 +132,7 @@ public class Categoria
 	 */
 	public boolean hayLibroDeAutor(String nombreAutor)
 	{
-		for (Libro libro : libros) {
+		for (Libro libro : this.libros) {
 			if (libro.darAutor().equals(nombreAutor)) {
 				return true;
 			}
