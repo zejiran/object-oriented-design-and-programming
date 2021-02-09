@@ -96,7 +96,7 @@ public class Categoria
 	 */
 	public int contarLibrosEnCategoria()
 	{
-		return libros.size();
+		return this.libros.size();
 	}
 
 	/**
