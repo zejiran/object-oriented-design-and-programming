@@ -155,7 +155,7 @@ public class Categoria
 	public ArrayList<Libro> buscarLibrosDeAutor(String nombreAutor)
 	{
 		ArrayList<Libro> nuevaLista = new ArrayList<Libro>();
-		for (Libro libro : libros) {
+		for (Libro libro : this.libros) {
 			if (libro.darAutor().toLowerCase().contains(nombreAutor.toLowerCase())){
 				nuevaLista.add(libro);
 			}
