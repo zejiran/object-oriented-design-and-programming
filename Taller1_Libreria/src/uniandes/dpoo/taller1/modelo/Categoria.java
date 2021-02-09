@@ -110,7 +110,7 @@ public class Categoria
 		int cantidad_libros = 0;
 		double promedio = 0;
 		
-		for (Libro libro : libros) {
+		for (Libro libro : this.libros) {
 			suma += libro.darCalificacion();
 			cantidad_libros += 1;
 		}
