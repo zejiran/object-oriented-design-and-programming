@@ -87,7 +87,7 @@ public class Categoria
 	 */
 	public void agregarLibro(Libro nuevoLibro)
 	{
-		libros.add(nuevoLibro);
+		this.libros.add(nuevoLibro);
 	}
 
 	/**
