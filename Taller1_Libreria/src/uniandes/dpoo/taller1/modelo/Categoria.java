@@ -37,7 +37,6 @@ public class Categoria
 	{
 		this.nombre = nombre;
 		this.ficcion = ficcion;
-		
 		this.libros = new ArrayList<Libro>();
 	}
 
