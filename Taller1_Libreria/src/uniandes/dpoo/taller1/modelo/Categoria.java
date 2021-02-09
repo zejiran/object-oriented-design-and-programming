@@ -72,7 +72,7 @@ public class Categoria
 	 */
 	public ArrayList<Libro> darLibros()
 	{
-		return libros;
+		return this.libros;
 	}
 
 	// ************************************************************************
