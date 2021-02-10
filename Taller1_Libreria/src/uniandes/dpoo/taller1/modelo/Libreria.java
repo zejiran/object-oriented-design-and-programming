@@ -302,7 +302,7 @@ public class Libreria {
 
 		for (int i = 0; i < this.categorias.length; i++) {
 			Categoria actual = this.categorias[i];
-			if (categoriaConMasLibros == null) { //Changed to "== null"
+			if (categoriaConMasLibros == null) {
 				categoriaConMasLibros = actual;
 			} else if (actual.contarLibrosEnCategoria() > categoriaConMasLibros.contarLibrosEnCategoria()) {
 				categoriaConMasLibros = actual;
