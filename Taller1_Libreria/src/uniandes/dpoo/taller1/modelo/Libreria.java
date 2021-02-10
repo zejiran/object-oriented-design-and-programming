@@ -26,10 +26,7 @@ public class Libreria {
 	/**
 	 * Una lista con los libros disponibles en la librería
 	 */
-	/*
-	 * TODO Parte 4 - agregar una asociación a la clase Libro llamada catalogos, que
-	 * sea una lista de libros
-	 */
+	private ArrayList<Libro> catalogo;
 
 	// ************************************************************************
 	// Constructores
@@ -48,10 +45,7 @@ public class Libreria {
 	 */
 	public Libreria(String nombreArchivoCategorias, String nombreArchivoLibros) throws IOException {
 		this.categorias = cargarCategorias(nombreArchivoCategorias);
-
-		// this.catalogo = cargarCatalogo(nombreArchivoLibros);
-		// TODO Parte 4 - después de crear el atributo catalogo, quite el comentario
-		// sobre la línea anterior
+		this.catalogo = cargarCatalogo(nombreArchivoLibros);
 	}
 
 	// ************************************************************************
@@ -73,8 +67,7 @@ public class Libreria {
 	 * @return catalogo
 	 */
 	public ArrayList<Libro> darLibros() {
-		// TODO Parte 4 - completar el método de acuerdo a la documentación
-		return null;
+		return this.catalogo;
 	}
 
 	// ************************************************************************
@@ -178,9 +171,9 @@ public class Libreria {
 		Categoria categoriaBuscada = null;
 
 		int i = 0;
-		while (i < this.categorias.length && categoriaBuscada.equals(null)) {
+		while (i < this.categorias.length && categoriaBuscada == null) { //Changed .equals(null) -> == null
 			Categoria actual = this.categorias[i];
-			if (actual.darNombre() == nombreCategoria) {
+			if (actual.darNombre().equals(nombreCategoria)) { // Chaged == nombreCategoria -> .equals(nombreCategoria)
 				categoriaBuscada = actual;
 			}
 
@@ -226,8 +219,11 @@ public class Libreria {
 	 *         libro con ese título
 	 */
 	public Libro buscarLibro(String tituloLibro) {
-		// TODO Parte 4 - completar el método de acuerdo a la documentación
-		// Debe recorrer la lista de libros (no tiene sentido recorrer las categorias)
+		for (Libro libro : this.catalogo) {
+			if (libro.darTitulo().contentEquals(tituloLibro)) {
+				return libro;
+			}
+		}
 		return null;
 	}
 
@@ -283,9 +279,15 @@ public class Libreria {
 	 * @return Calificación promedio del catálogo
 	 */
 	public double calificacionPromedio() {
-		// TODO Parte 4 - completar el método de acuerdo a la documentación
-		// Debe recorrer la lista de libros (no tiene sentido recorrer las categorias)
-		return 0.0;
+		double suma = 0;
+		int cantidad_libros = 0;
+		double promedio = 0;
+		for (Libro libro : this.catalogo) {
+			suma += libro.darCalificacion();
+			cantidad_libros += 1;
+		}
+		promedio = (cantidad_libros == 0) ? 0 : suma/cantidad_libros;
+		return promedio;
 	}
 
 	/**
@@ -300,7 +302,7 @@ public class Libreria {
 
 		for (int i = 0; i < this.categorias.length; i++) {
 			Categoria actual = this.categorias[i];
-			if (categoriaConMasLibros.equals(null)) {
+			if (categoriaConMasLibros == null) { //Changed to "== null"
 				categoriaConMasLibros = actual;
 			} else if (actual.contarLibrosEnCategoria() > categoriaConMasLibros.contarLibrosEnCategoria()) {
 				categoriaConMasLibros = actual;
@@ -320,7 +322,7 @@ public class Libreria {
 		Categoria categoriaConMayorPromedio = null;
 
 		for (Categoria actual : this.categorias) {
-			if (categoriaConMayorPromedio.equals(null)) {
+			if (categoriaConMayorPromedio == null) { //Changed to "== null"
 				categoriaConMayorPromedio = actual;
 			} else if (actual.calificacionPromedio() > categoriaConMayorPromedio.calificacionPromedio()) {
 				categoriaConMayorPromedio = actual;
@@ -336,9 +338,13 @@ public class Libreria {
 	 * @return Cantidad de libros sin portada
 	 */
 	public int contarLibrosSinPortada() {
-		// TODO Parte 4 - completar el método de acuerdo a la documentación
-		// Debe recorrer la lista de libros (no tiene sentido recorrer las categorias)
-		return 0;
+		int cantidad_sin_portada = 0;
+		for (Libro libro : this.catalogo) {
+			if (libro.darPortada().darRutaArchivo().equals("./data/imagenes/missing.png")) {
+				cantidad_sin_portada += 1;
+			}
+		}
+		return cantidad_sin_portada;
 	}
 
 	/**
@@ -348,9 +354,20 @@ public class Libreria {
 	 *         categorías diferentes. Retorna false en caso contrario.
 	 */
 	public boolean hayAutorEnVariasCategorias() {
-		// TODO Parte 4 - completar el método de acuerdo a la documentación
-		// Implemente el método como considere conveniente (recorriendo primero las
-		// categorías o los libros)
+		for (Libro libro : this.catalogo) {
+			int cantidad_categorias_libro = 0;
+			for (Categoria categoria : this.categorias) {
+				ArrayList<Libro> libros_autor = categoria.buscarLibrosDeAutor(libro.darAutor());
+				
+				if (libros_autor.contains(libro)) {
+					cantidad_categorias_libro += 1;
+				}
+				
+				if (cantidad_categorias_libro >= 2) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 

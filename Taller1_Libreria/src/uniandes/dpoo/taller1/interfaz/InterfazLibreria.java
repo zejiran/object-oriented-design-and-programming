@@ -1,4 +1,4 @@
-package uniandes.dpoo.taller1.interfaz;
+	package uniandes.dpoo.taller1.interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

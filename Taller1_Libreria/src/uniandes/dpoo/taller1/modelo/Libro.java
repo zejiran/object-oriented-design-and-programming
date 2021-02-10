@@ -57,6 +57,7 @@ public class Libro {
 		autor = elAutor;
 		calificacion = laCalificacion;
 		categoria = laCategoria;
+//		System.out.println(laCategoria.darNombre());
 		categoria.agregarLibro(this);
 	}
 
