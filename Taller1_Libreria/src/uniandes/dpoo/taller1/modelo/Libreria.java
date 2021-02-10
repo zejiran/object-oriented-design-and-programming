@@ -173,7 +173,7 @@ public class Libreria {
 		int i = 0;
 		while (i < this.categorias.length && categoriaBuscada == null) { //Changed .equals(null) -> == null
 			Categoria actual = this.categorias[i];
-			if (actual.darNombre().equals(nombreCategoria)) { // Chaged == nombreCategoria -> .equals(nombreCategoria)
+			if (actual.darNombre().equals(nombreCategoria)) {
 				categoriaBuscada = actual;
 			}
 
