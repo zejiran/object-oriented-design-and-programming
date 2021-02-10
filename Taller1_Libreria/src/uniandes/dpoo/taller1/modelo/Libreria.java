@@ -355,15 +355,13 @@ public class Libreria {
 	 */
 	public boolean hayAutorEnVariasCategorias() {
 		for (Libro libro : this.catalogo) {
-			int cantidad_categorias_libro = 0;
+			int cantidad_categorias_autor = 0;
 			for (Categoria categoria : this.categorias) {
-				ArrayList<Libro> libros_autor = categoria.buscarLibrosDeAutor(libro.darAutor());
-				
-				if (libros_autor.contains(libro)) {
-					cantidad_categorias_libro += 1;
+				if (categoria.hayLibroDeAutor(libro.darAutor())) {
+					cantidad_categorias_autor += 1;
 				}
 				
-				if (cantidad_categorias_libro >= 2) {
+				if (cantidad_categorias_autor >= 2) {
 					return true;
 				}
 			}
