@@ -340,7 +340,7 @@ public class Libreria {
 	public int contarLibrosSinPortada() {
 		int cantidad_sin_portada = 0;
 		for (Libro libro : this.catalogo) {
-			if (libro.darPortada().darRutaArchivo().equals("./data/imagenes/missing.png")) {
+			if (libro.darPortada().darRutaArchivo().equals("./imagenes/missing.png")) {
 				cantidad_sin_portada += 1;
 			}
 		}
