@@ -359,7 +359,7 @@ public class Libreria {
 			for (Categoria categoria : this.categorias) {
 				ArrayList<Libro> libros_autor = categoria.buscarLibrosDeAutor(libro.darAutor());
 				
-				if (libros_autor.contains(libro)) {
+				if (libros_autor.size() != 0) {
 					cantidad_categorias_libro += 1;
 				}
 				

@@ -106,10 +106,10 @@ public class Libro {
 	 * archivo "./data/imagenes/missing.png"
 	 * 
 	 * @return La portada del libro o un objeto de tipo Imagen con la imagen del
-	 *         archivo "./data/imagenes/missing.png"
+	 *         archivo "./data/imagenes/missing.png" -> Esta ruta está mal.
 	 */
 	public Imagen darPortada() {
-		Imagen portadaDefecto = new Imagen("./data/imagenes/missing.png", 85, 85);
+		Imagen portadaDefecto = new Imagen("./imagenes/missing.png", 85, 85);
 		if (portada != null) {
 			return this.portada;
 		}
