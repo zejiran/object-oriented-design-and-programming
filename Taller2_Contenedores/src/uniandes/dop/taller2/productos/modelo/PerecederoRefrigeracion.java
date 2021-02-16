@@ -7,19 +7,16 @@ public class PerecederoRefrigeracion extends Producto {
 		super(nombre, peso, volumen);
 		this.maxTemp = maxTemp;
 	}
-
-//	@Override
-//	public boolean equals(Object obj) {
-//		Producto Prod = (Producto) obj;
-//		if (obj.toString().contains("Perecedero de Refrigeración")) {
-//			if (this.maxTemp == Prod.maxTemp && this.nombre.equals(Prod.nombre) && this.peso == obj.peso && this.volumen == obj.volumen) {
-//				return true;
-//			}
-//		}
-//	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return obj.toString().equals(this.toString());
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "Perecedero de Refrigeración " + this.nombre;
+		return "Perecedero Refrigeracion: [nombre: " + this.nombre + ", peso: " + this.peso + ", volumen: "
+				+ this.volumen + ", maxTemp: " + this.maxTemp + "]";
 	}
 }

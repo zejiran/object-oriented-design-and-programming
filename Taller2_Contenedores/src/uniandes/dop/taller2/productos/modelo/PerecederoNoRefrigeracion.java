@@ -9,8 +9,14 @@ public class PerecederoNoRefrigeracion extends Producto{
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		return obj.toString().equals(this.toString());
+	}
+	
+	@Override
 	public String toString() {
-		return "Perecedero de No Refrigeración " + this.nombre;
+		return "Perecedero No Refrigeracion: [nombre: " + this.nombre + ", peso: " + this.peso + ", volumen: "
+				+ this.volumen + ", resisteCalor: " + this.resisteCalor + "]";
 	}
 	
 	

@@ -14,10 +14,6 @@ public abstract class Producto {
 		this.volumen = volumen;
 	}
 
-
-
 	public abstract String toString();
-	
-	
 
 }

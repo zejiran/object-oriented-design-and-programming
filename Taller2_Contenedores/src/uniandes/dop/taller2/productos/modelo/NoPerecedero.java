@@ -9,14 +9,15 @@ public class NoPerecedero extends Producto {
 		this.toxicidad = toxicidad;	
 	}
 	
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (obj.nombre.equals(this.nombre) && )
-//	}
+	@Override
+	public boolean equals(Object obj) {
+		return obj.toString().equals(this.toString());
+	}
 
 	@Override
 	public String toString() {
-		return "No Perecedero " + this.nombre;
+		return "No Perecedero: [nombre: " + this.nombre + ", peso: " + this.peso + ", volumen: "
+				+ this.volumen + ", toxicidad: " + this.toxicidad + "]";
 	}
 	
 
