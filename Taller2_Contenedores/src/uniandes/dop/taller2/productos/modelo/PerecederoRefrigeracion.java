@@ -17,6 +17,6 @@ public class PerecederoRefrigeracion extends Producto {
 	@Override
 	public String toString() {
 		return "Perecedero Refrigeracion: [nombre: " + this.nombre + ", peso: " + this.peso + ", volumen: "
-				+ this.volumen + ", maxTemp: " + this.maxTemp + "]";
+				+ this.volumen + ", máxima temperatura: " + this.maxTemp + "]";
 	}
 }
