@@ -18,6 +18,14 @@ public class PerecederoNoRefrigeracion extends Producto{
 		return "Perecedero No Refrigeracion: [nombre: " + this.nombre + ", peso: " + this.peso + ", volumen: "
 				+ this.volumen + ", resisteCalor: " + this.resisteCalor + "]";
 	}
+
+	public boolean isResisteCalor() {
+		return resisteCalor;
+	}
+
+	public void setResisteCalor(boolean resisteCalor) {
+		this.resisteCalor = resisteCalor;
+	}
 	
 	
 }
