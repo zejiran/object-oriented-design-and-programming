@@ -11,6 +11,7 @@ abstract class Producto {
  # peso: double
  # volumen: double
  +toString(): String
+ +equals(Producto): boolean
 }
 
 class PerecederoRefrigeracion {
