@@ -1,9 +1,10 @@
 # Raw Class Diagrams
 
-To generate diagrams go to: http://www.plantuml.com/
+To generate diagrams go to http://www.plantuml.com/
 
 ### Producto
 
+```
 @startuml
 abstract class Producto {
  # nombre: String
@@ -29,9 +30,11 @@ Producto <|-- PerecederoRefrigeracion
 Producto <|-- NoPerecedero
 Producto <|-- PerecederoNoRefrigeracion
 @enduml
+```
 
 ### Contenedor
 
+```
 @startuml
 class Contenedor {
  - cargamentos: ArrayList<Cargamento>
@@ -52,4 +55,5 @@ class Cargamento {
 
 Contenedor *-- Cargamento: contains
 @enduml
+```
 
