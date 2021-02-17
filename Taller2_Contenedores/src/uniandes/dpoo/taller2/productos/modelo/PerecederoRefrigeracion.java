@@ -19,4 +19,14 @@ public class PerecederoRefrigeracion extends Producto {
 		return "Perecedero Refrigeracion: [nombre: " + this.nombre + ", peso: " + this.peso + ", volumen: "
 				+ this.volumen + ", máxima temperatura: " + this.maxTemp + "]";
 	}
+
+	public double getMaxTemp() {
+		return maxTemp;
+	}
+
+	public void setMaxTemp(double maxTemp) {
+		this.maxTemp = maxTemp;
+	}
+	
+	
 }
