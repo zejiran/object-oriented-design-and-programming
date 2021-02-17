@@ -6,7 +6,7 @@ public class NoPerecedero extends Producto {
 	
 	public NoPerecedero(String nombre, double peso, double volumen, int toxicidad) {
 		super(nombre, peso, volumen);
-		this.toxicidad = toxicidad;	
+		setToxicidad(toxicidad);	
 	}
 	
 	@Override
