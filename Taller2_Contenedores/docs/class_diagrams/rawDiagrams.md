@@ -44,6 +44,7 @@ class Contenedor {
  - esExclusivo: boolean
  - verificarCapacidad(): boolean
  + agregarCargamento(): void
+ + eliminarCargamento(String): void
  + generarManifiesto(): String
  + toString(): String
 }
@@ -58,4 +59,3 @@ class Cargamento {
 Contenedor *-- Cargamento: contains
 @enduml
 ```
-
