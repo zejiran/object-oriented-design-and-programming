@@ -15,5 +15,13 @@ public abstract class Producto {
 	}
 
 	public abstract String toString();
+	
+	public double getPeso(){
+		return this.peso;	
+	}
+	
+	public double getVolumen(){
+		return this.volumen;	
+	}
 
 }
