@@ -1,4 +1,4 @@
-package uniandes.dop.taller2.productos.modelo;
+package uniandes.dpoo.taller2.productos.modelo;
 
 public class PerecederoNoRefrigeracion extends Producto{
 	private boolean resisteCalor;

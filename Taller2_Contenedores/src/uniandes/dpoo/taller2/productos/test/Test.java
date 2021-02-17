@@ -1,9 +1,9 @@
-package uniandes.dop.taller2.productos.test;
+package uniandes.dpoo.taller2.productos.test;
 
-import uniandes.dop.taller2.productos.modelo.Producto;
-import uniandes.dop.taller2.productos.modelo.NoPerecedero;
-import uniandes.dop.taller2.productos.modelo.PerecederoRefrigeracion;
-import uniandes.dop.taller2.productos.modelo.PerecederoNoRefrigeracion;
+import uniandes.dpoo.taller2.productos.modelo.NoPerecedero;
+import uniandes.dpoo.taller2.productos.modelo.PerecederoNoRefrigeracion;
+import uniandes.dpoo.taller2.productos.modelo.PerecederoRefrigeracion;
+import uniandes.dpoo.taller2.productos.modelo.Producto;
 
 
 public class Test {

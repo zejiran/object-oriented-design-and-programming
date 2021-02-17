@@ -1,4 +1,4 @@
-package uniandes.dop.taller2.productos.modelo;
+package uniandes.dpoo.taller2.productos.modelo;
 
 public abstract class Producto {
 
