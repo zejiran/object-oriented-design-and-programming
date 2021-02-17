@@ -41,7 +41,8 @@ class Contenedor {
  - cargamentos: ArrayList<Cargamento>
  - capacidadVolumétrica: int
  - capacidadPorPeso: int
- - esExclusivo: bool
+ - esExclusivo: boolean
+ - verificarCapacidad(): boolean
  + agregarCargamento(): void
  + generarManifiesto(): String
  + toString(): String
