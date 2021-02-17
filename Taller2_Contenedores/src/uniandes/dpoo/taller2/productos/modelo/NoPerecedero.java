@@ -2,7 +2,7 @@ package uniandes.dpoo.taller2.productos.modelo;
 
 public class NoPerecedero extends Producto {
 	private int toxicidad;
-	private int MAX_TEMP = 50;
+	private double MAX_TEMP = 50;
 	
 	public NoPerecedero(String nombre, double peso, double volumen, int toxicidad) {
 		super(nombre, peso, volumen);
@@ -26,6 +26,14 @@ public class NoPerecedero extends Producto {
 	    } else {
 	        throw new IllegalArgumentException("Toxicidad is not valid.");
 	    }
+	}
+
+	public double getMAX_TEMP() {
+		return MAX_TEMP;
+	}
+
+	public int getToxicidad() {
+		return toxicidad;
 	}
 	
 
