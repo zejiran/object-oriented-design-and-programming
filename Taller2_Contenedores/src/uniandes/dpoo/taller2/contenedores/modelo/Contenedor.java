@@ -15,7 +15,7 @@ public class Contenedor {
 	private double capacidadPorPeso;
 	private boolean esExclusivo;
 
-	public Contenedor(ArrayList<Cargamento> cargamentos, int capacidadVolumetrica, int capacidadPorPeso,
+	public Contenedor(ArrayList<Cargamento> cargamentos, double capacidadVolumetrica, double capacidadPorPeso,
 			boolean esExclusivo) {
 		this.cargamentos = cargamentos;
 		this.capacidadVolumetrica = capacidadVolumetrica;
@@ -24,7 +24,7 @@ public class Contenedor {
 	}
 
 	private double[] obtenerCapacidadUsada() {
-		double[] capacidad = { 0.0, 0.0 }; // {volumen, peso}
+		double[] capacidad = { 0, 0 }; // {volumen, peso}
 		Collection<Cargamento> cargamentos = this.cargamentos;
 
 		// Iterate cargamentos of Contenedor to get the currently occupied capacity
@@ -63,8 +63,9 @@ public class Contenedor {
 
 	public void agregarCargamento(Cargamento cargamento) {
 		// Verify capacidad of Contenedor
-		double pesoAgregado = cargamento.getProducto().getPeso() / Math.pow(10, 6);
-		double volumenAgregado = cargamento.getProducto().getVolumen() / Math.pow(10, 6);
+		double pesoAgregado = (cargamento.getProducto().getPeso() / Math.pow(10, 6)) * cargamento.getUnidadesProducto();
+		double volumenAgregado = (cargamento.getProducto().getVolumen() / Math.pow(10, 6))
+				* cargamento.getUnidadesProducto();
 		boolean hayCapacidad = this.verificarCapacidad(pesoAgregado, volumenAgregado);
 		if (!hayCapacidad) {
 			return;
@@ -108,6 +109,7 @@ public class Contenedor {
 		}
 
 		this.cargamentos.add(cargamento);
+		System.out.println("El cargamento " + cargamento.getId() + " se ha añadido satisfactoriamente");
 	}
 
 	public void eliminarCargamento(String id) {
@@ -119,7 +121,7 @@ public class Contenedor {
 			Cargamento cargamentoActual = iterator.next();
 			if (cargamentoActual.getId().equals(id)) {
 				this.cargamentos.remove(cargamentoActual);
-				System.out.println("El cargamento" + id + "ha sido eliminado satisfactoriamente");
+				System.out.println("El cargamento " + id + " ha sido eliminado satisfactoriamente");
 				return;
 			}
 		}
@@ -139,7 +141,7 @@ public class Contenedor {
 		for (Iterator<Cargamento> iterator = cargamentos.iterator(); iterator.hasNext();) {
 			Cargamento cargamentoActual = iterator.next();
 			Producto productoActual = cargamentoActual.getProducto();
-			manifiesto += "- Cargamento" + cargamentoActual.getId() + "\n";
+			manifiesto += "- Cargamento " + cargamentoActual.getId() + "\n";
 			manifiesto += "  Propiedad de '" + cargamentoActual.getPropietario() + "' \n";
 			manifiesto += "  Contiene '" + cargamentoActual.getProducto().getNombre() + "' \n";
 			manifiesto += "  Unidades: " + cargamentoActual.getUnidadesProducto() + "\n\n";
@@ -161,15 +163,15 @@ public class Contenedor {
 		}
 
 		manifiesto += "\n* Resumen final *\n";
-		manifiesto += "Se tienen " + this.cargamentos.size() + " cargamentos en el contenedor actual\n";
+		manifiesto += "  Se tienen " + this.cargamentos.size() + " cargamentos en el contenedor actual\n";
 		double[] capacidadUsada = obtenerCapacidadUsada();
 		double volumenActual = capacidadUsada[0];
 		double pesoActual = capacidadUsada[1];
-		manifiesto += "Se han usado " + volumenActual + " de " + this.capacidadVolumetrica + " metros cúbicos\n";
-		manifiesto += "Se han usado " + pesoActual + " de " + this.capacidadPorPeso + " toneladas\n";
-		manifiesto += "Refrigeración requerida:" + refrigeracion + "\n";
-		manifiesto += "Temperatura máxima: " + maxTemp + "\n";
-		manifiesto += "Nivel de toxicidad: " + toxicidad + "\n";
+		manifiesto += "  Se han usado " + volumenActual + " de " + this.capacidadVolumetrica + " metros cúbicos\n";
+		manifiesto += "  Se han usado " + pesoActual + " de " + this.capacidadPorPeso + " toneladas\n";
+		manifiesto += "  Refrigeración requerida: " + (refrigeracion ? "sí" : "no") + "\n";
+		manifiesto += "  Temperatura máxima: " + maxTemp + "\n";
+		manifiesto += "  Nivel de toxicidad: " + toxicidad + "\n";
 
 		return manifiesto;
 	}
