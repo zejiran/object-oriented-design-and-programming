@@ -1,18 +1,13 @@
-package uniandes.dpoo.taller2.contenedores.modelo;
+package uniandes.dpoo.taller2.extension.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import uniandes.dpoo.taller2.productos.modelo.NoPerecedero;
-import uniandes.dpoo.taller2.productos.modelo.PerecederoNoRefrigeracion;
-import uniandes.dpoo.taller2.productos.modelo.PerecederoRefrigeracion;
-import uniandes.dpoo.taller2.productos.modelo.Producto;
-
 public class Contenedor {
-	private ArrayList<Cargamento> cargamentos;
-	private double capacidadVolumetrica;
-	private double capacidadPorPeso;
+	protected ArrayList<Cargamento> cargamentos;
+	protected double capacidadVolumetrica;
+	protected double capacidadPorPeso;
 	private boolean esExclusivo;
 
 	public Contenedor(ArrayList<Cargamento> cargamentos, double capacidadVolumetrica, double capacidadPorPeso,
@@ -23,7 +18,7 @@ public class Contenedor {
 		this.esExclusivo = esExclusivo;
 	}
 
-	private double[] obtenerCapacidadUsada() {
+	protected double[] obtenerCapacidadUsada() {
 		double[] capacidad = { 0, 0 }; // {volumen, peso}
 		Collection<Cargamento> cargamentos = this.cargamentos;
 
@@ -144,7 +139,7 @@ public class Contenedor {
 			manifiesto += "- Cargamento " + cargamentoActual.getId() + "\n";
 			manifiesto += "  Propiedad de '" + cargamentoActual.getPropietario() + "' \n";
 			manifiesto += "  Contiene '" + cargamentoActual.getProducto().getNombre() + "' \n";
-			manifiesto += "  Unidades: " + cargamentoActual.getUnidadesProducto() + "\n\n";
+			manifiesto += "  Unidades: " + cargamentoActual.getUnidadesProducto() + "\n";
 
 			if (productoActual instanceof NoPerecedero) {
 				if (toxicidad < ((NoPerecedero) productoActual).getToxicidad()) {
@@ -155,14 +150,18 @@ public class Contenedor {
 				if (maxTemp > ((PerecederoRefrigeracion) productoActual).getMaxTemp()) {
 					maxTemp = ((PerecederoRefrigeracion) productoActual).getMaxTemp();
 				}
+				manifiesto += "  Fecha de vencimiento: "
+						+ ((PerecederoRefrigeracion) productoActual).getFechaVencimiento() + "\n";
 			} else if (productoActual instanceof PerecederoNoRefrigeracion) {
 				if (!((PerecederoNoRefrigeracion) productoActual).getResisteCalor()) {
 					refrigeracion = true;
 				}
+				manifiesto += "  Fecha de vencimiento: "
+						+ ((PerecederoNoRefrigeracion) productoActual).getFechaVencimiento() + "\n";
 			}
 		}
 
-		manifiesto += "\n* Resumen final *\n";
+		manifiesto += "\n\n* Resumen final *\n";
 		manifiesto += "  Se tienen " + this.cargamentos.size() + " cargamentos en el contenedor actual\n";
 		double[] capacidadUsada = obtenerCapacidadUsada();
 		double volumenActual = capacidadUsada[0];

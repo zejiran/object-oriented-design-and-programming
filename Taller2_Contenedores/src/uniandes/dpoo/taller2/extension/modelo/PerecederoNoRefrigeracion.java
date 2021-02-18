@@ -1,11 +1,16 @@
-package uniandes.dpoo.taller2.productos.modelo;
+package uniandes.dpoo.taller2.extension.modelo;
 
 public class PerecederoNoRefrigeracion extends Producto {
 	private boolean resisteCalor;
+	private String tipo;
+	private String fechaVencimiento;
 
-	public PerecederoNoRefrigeracion(String nombre, double peso, double volumen, boolean resisteCalor) {
-		super(nombre, peso, volumen);
+	public PerecederoNoRefrigeracion(String nombre, double peso, double volumen, boolean inflamable,
+			boolean resisteCalor, String tipo, String fechaVencimiento) {
+		super(nombre, peso, volumen, inflamable);
 		this.resisteCalor = resisteCalor;
+		this.tipo = tipo;
+		this.setFechaVencimiento(fechaVencimiento);
 	}
 
 	@Override
@@ -25,5 +30,21 @@ public class PerecederoNoRefrigeracion extends Producto {
 
 	public void setResisteCalor(boolean resisteCalor) {
 		this.resisteCalor = resisteCalor;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(String fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
 	}
 }

@@ -1,11 +1,11 @@
-package uniandes.dpoo.taller2.productos.modelo;
+package uniandes.dpoo.taller2.extension.modelo;
 
 public class NoPerecedero extends Producto {
 	private int toxicidad;
 	private double MAX_TEMP = 50;
 
-	public NoPerecedero(String nombre, double peso, double volumen, int toxicidad) {
-		super(nombre, peso, volumen);
+	public NoPerecedero(String nombre, double peso, double volumen, int toxicidad, boolean inflamable) {
+		super(nombre, peso, volumen, inflamable);
 		setToxicidad(toxicidad);
 	}
 
@@ -24,7 +24,7 @@ public class NoPerecedero extends Producto {
 		if (0 <= toxicidad && toxicidad <= 5) {
 			this.toxicidad = toxicidad;
 		} else {
-			throw new IllegalArgumentException("Toxicidad is not valid.");
+			System.out.println("Toxicidad is not valid.");
 		}
 	}
 

@@ -17,15 +17,15 @@ abstract class Producto {
  + getNombre(): String
  + getVolumen(): double
  + getPeso(): double
- + setNombre(): void
- + setVolumen(): void
- + setPeso(): void
+ + setNombre(String): void
+ + setVolumen(double): void
+ + setPeso(double): void
 }
 
 class PerecederoRefrigeracion {
  - maxTemp: double
  + getMaxTemp(): int
- + setMaxTemp(): void
+ + setMaxTemp(double): void
  + toString(): String
  + equals(Producto): boolean
 }
@@ -33,7 +33,7 @@ class PerecederoRefrigeracion {
 class PerecederoNoRefrigeracion {
  - resisteCalor: boolean
  + getResisteCalor(): boolean
- + setResisteCalor(): void
+ + setResisteCalor(boolean): void
  + toString(): String
  + equals(Producto): boolean
 }
