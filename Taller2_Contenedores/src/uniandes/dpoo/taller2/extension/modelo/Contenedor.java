@@ -136,7 +136,7 @@ public class Contenedor {
 		for (Iterator<Cargamento> iterator = cargamentos.iterator(); iterator.hasNext();) {
 			Cargamento cargamentoActual = iterator.next();
 			Producto productoActual = cargamentoActual.getProducto();
-			manifiesto += "- Cargamento " + cargamentoActual.getId() + "\n";
+			manifiesto += "\n- Cargamento " + cargamentoActual.getId() + "\n";
 			manifiesto += "  Propiedad de '" + cargamentoActual.getPropietario() + "' \n";
 			manifiesto += "  Contiene '" + cargamentoActual.getProducto().getNombre() + "' \n";
 			manifiesto += "  Unidades: " + cargamentoActual.getUnidadesProducto() + "\n";

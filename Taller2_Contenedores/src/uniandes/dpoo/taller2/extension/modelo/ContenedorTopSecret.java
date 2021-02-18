@@ -23,9 +23,9 @@ public class ContenedorTopSecret extends Contenedor {
 		for (Iterator<Cargamento> iterator = cargamentos.iterator(); iterator.hasNext();) {
 			Cargamento cargamentoActual = iterator.next();
 			Producto productoActual = cargamentoActual.getProducto();
-			manifiesto += "- Cargamento secreto\n";
+			manifiesto += "\n- Cargamento " + cargamentoActual.getId() + "\n";
 			manifiesto += "  Propiedad anónima\n";
-			manifiesto += "  Contiene '" + cargamentoActual.getProducto().getNombre() + "' \n";
+			manifiesto += "  Contiene producto secreto\n";
 			manifiesto += "  Unidades: " + cargamentoActual.getUnidadesProducto() + "\n";
 
 			if (productoActual instanceof NoPerecedero) {
