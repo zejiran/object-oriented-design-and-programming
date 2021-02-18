@@ -1,4 +1,8 @@
-# Raw Class Diagrams
+# Class Diagrams
+
+On this section, you can find images and code for class diagrams used on project.
+
+## Raw Class Diagrams
 
 To generate diagrams go to http://www.plantuml.com/
 
@@ -13,9 +17,9 @@ abstract class Producto {
  + getNombre(): String
  + getVolumen(): double
  + getPeso(): double
- + setNombre(): String
- + setVolumen(): double
- + setPeso(): double
+ + setNombre(): void
+ + setVolumen(): void
+ + setPeso(): void
 }
 
 class PerecederoRefrigeracion {
@@ -80,4 +84,16 @@ class Cargamento {
 
 Contenedor *-- Cargamento: contains
 @enduml
+```
+
+### Extensión Producto
+
+```
+
+```
+
+### Extensión Contenedor
+
+```
+
 ```
