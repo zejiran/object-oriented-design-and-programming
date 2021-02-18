@@ -10,21 +10,38 @@ abstract class Producto {
  # nombre: String
  # peso: double
  # volumen: double
- +toString(): String
- +equals(Producto): boolean
+ + getNombre(): String
+ + getVolumen(): double
+ + getPeso(): double
+ + setNombre(): String
+ + setVolumen(): double
+ + setPeso(): double
 }
 
 class PerecederoRefrigeracion {
- -maxTemp: double
+ - maxTemp: double
+ + getMaxTemp(): int
+ + setMaxTemp(): void
+ + toString(): String
+ + equals(Producto): boolean
 }
 
 class PerecederoNoRefrigeracion {
  - resisteCalor: boolean
+ + getResisteCalor(): boolean
+ + setResisteCalor(): void
+ + toString(): String
+ + equals(Producto): boolean
 }
 
 class NoPerecedero {
  - toxicidad: int
- - MAX_TEMP: int 50
+ - MAX_TEMP: double 50.0
+ + getMAX_TEMP(): double
+ + getToxicidad(): int
+ + setToxicidad(int): void
+ + toString(): String
+ + equals(Producto): boolean
 }
 
 Producto <|-- PerecederoRefrigeracion
@@ -39,11 +56,12 @@ Producto <|-- PerecederoNoRefrigeracion
 @startuml
 class Contenedor {
  - cargamentos: ArrayList<Cargamento>
- - capacidadVolumétrica: int
- - capacidadPorPeso: int
+ - capacidadVolumétrica: double
+ - capacidadPorPeso: double
  - esExclusivo: boolean
- - verificarCapacidad(): boolean
- + agregarCargamento(): void
+ - obtenerCapacidadUsada(): []double
+ - verificarCapacidad(double, double): boolean
+ + agregarCargamento(Cargamento): void
  + eliminarCargamento(String): void
  + generarManifiesto(): String
  + toString(): String
@@ -54,6 +72,10 @@ class Cargamento {
  - propietario: String
  - id: String
  - unidadesProducto: int
+ +getUnidadesProducto(): int
+ +getId(): String
+ +getPropietario(): String
+ +getProducto(): Producto
 }
 
 Contenedor *-- Cargamento: contains
