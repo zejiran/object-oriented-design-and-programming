@@ -1,12 +1,9 @@
 package uniandes.dpoo.taller2.productos.modelo;
 
 public abstract class Producto {
-
 	protected String nombre;
 	protected double peso;
 	protected double volumen;
-	
-	
 
 	protected Producto(String nombre, double peso, double volumen) {
 		this.nombre = nombre;
@@ -39,7 +36,4 @@ public abstract class Producto {
 	public void setVolumen(double volumen) {
 		this.volumen = volumen;
 	}
-	
-	
-
 }

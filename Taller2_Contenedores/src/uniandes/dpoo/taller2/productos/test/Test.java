@@ -5,9 +5,7 @@ import uniandes.dpoo.taller2.productos.modelo.PerecederoNoRefrigeracion;
 import uniandes.dpoo.taller2.productos.modelo.PerecederoRefrigeracion;
 import uniandes.dpoo.taller2.productos.modelo.Producto;
 
-
 public class Test {
-	
 	public static void main(String[] args) {
 		Producto producto1 = new PerecederoNoRefrigeracion("Zucaritas", 300, 150, true);
 		Producto producto2 = new PerecederoNoRefrigeracion("Zucaritas", 300, 150, true);
@@ -24,5 +22,4 @@ public class Test {
 		System.out.println(producto4.equals(producto3)); // false
 		System.out.println(producto5.equals(producto1)); // false
 	}
-
 }

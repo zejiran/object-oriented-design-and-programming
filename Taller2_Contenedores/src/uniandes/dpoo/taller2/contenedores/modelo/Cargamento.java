@@ -1,5 +1,6 @@
 package uniandes.dpoo.taller2.contenedores.modelo;
-package uniandes.dpoo.taller2.productos.modelo;
+
+import uniandes.dpoo.taller2.productos.modelo.Producto;
 
 public class Cargamento {
 	private Producto producto;
@@ -17,7 +18,7 @@ public class Cargamento {
 	public Producto getProducto() {
 		return producto;
 	}
-	
+
 	public String getPropietario() {
 		return propietario;
 	}

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import uniandes.dpoo.taller2.productos.modelo.NoPerecedero;
+import uniandes.dpoo.taller2.productos.modelo.PerecederoNoRefrigeracion;
+import uniandes.dpoo.taller2.productos.modelo.PerecederoRefrigeracion;
+import uniandes.dpoo.taller2.productos.modelo.Producto;
+
 public class Contenedor {
 	private ArrayList<Cargamento> cargamentos;
 	private double capacidadVolumetrica;
@@ -38,7 +43,7 @@ public class Contenedor {
 		return capacidad;
 	}
 
-	private boolean verificarCapacidad(int pesoAgregado, int volumenAgregado) {
+	private boolean verificarCapacidad(double pesoAgregado, double volumenAgregado) {
 		double[] capacidadUsada = obtenerCapacidadUsada();
 		double volumenActual = capacidadUsada[0];
 		double pesoActual = capacidadUsada[1];
@@ -81,7 +86,7 @@ public class Contenedor {
 				Producto productoActual = cargamentoActual.getProducto();
 
 				if (productoActual instanceof NoPerecedero) {
-					if (productoActual.getToxicidad() > 0) {
+					if (((NoPerecedero) productoActual).getToxicidad() > 0) {
 						hayToxico = true;
 					}
 				} else if (productoActual instanceof PerecederoRefrigeracion
@@ -89,13 +94,13 @@ public class Contenedor {
 					hayPerecedero = true;
 				}
 			}
-			
+
 			if ((cargamento.getProducto() instanceof PerecederoRefrigeracion
 					|| cargamento.getProducto() instanceof PerecederoNoRefrigeracion) && hayToxico) {
 				System.out.println("ERROR: no se permite añadir productos perecederos con tóxicos");
 				return;
-			} else if (productoActual instanceof NoPerecedero && hayPerecedero) {
-				if (productoActual.getToxicidad() > 0) {
+			} else if (cargamento.getProducto() instanceof NoPerecedero && hayPerecedero) {
+				if (((NoPerecedero) cargamento.getProducto()).getToxicidad() > 0) {
 					System.out.println("ERROR: no se permite añadir productos tóxicos con perecederos");
 					return;
 				}
@@ -133,23 +138,23 @@ public class Contenedor {
 		manifiesto += "* Cargamentos\n";
 		for (Iterator<Cargamento> iterator = cargamentos.iterator(); iterator.hasNext();) {
 			Cargamento cargamentoActual = iterator.next();
-			Producto productoActual =cargamentoActual.getProducto()
-					manifiesto += "- Cargamento" + cargamentoActual.getId() + "\n";
+			Producto productoActual = cargamentoActual.getProducto();
+			manifiesto += "- Cargamento" + cargamentoActual.getId() + "\n";
 			manifiesto += "  Propiedad de '" + cargamentoActual.getPropietario() + "' \n";
 			manifiesto += "  Contiene '" + cargamentoActual.getProducto().getNombre() + "' \n";
 			manifiesto += "  Unidades: " + cargamentoActual.getUnidadesProducto() + "\n\n";
 
 			if (productoActual instanceof NoPerecedero) {
-				if (toxicidad < productoActual.getToxicidad()) {
-					toxicidad = productoActual.getToxicidad();
+				if (toxicidad < ((NoPerecedero) productoActual).getToxicidad()) {
+					toxicidad = ((NoPerecedero) productoActual).getToxicidad();
 				}
 			} else if (productoActual instanceof PerecederoRefrigeracion) {
 				refrigeracion = true;
-				if (maxTemp > productoActual.getMaxTemp()) {
-					maxTemp = productoActual.getMaxTemp();
+				if (maxTemp > ((PerecederoRefrigeracion) productoActual).getMaxTemp()) {
+					maxTemp = ((PerecederoRefrigeracion) productoActual).getMaxTemp();
 				}
 			} else if (productoActual instanceof PerecederoNoRefrigeracion) {
-				if (!productoActual.getResisteCalor()) {
+				if (!((PerecederoNoRefrigeracion) productoActual).getResisteCalor()) {
 					refrigeracion = true;
 				}
 			}
