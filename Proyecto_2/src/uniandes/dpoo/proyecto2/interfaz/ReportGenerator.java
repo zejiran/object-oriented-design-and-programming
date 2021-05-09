@@ -27,7 +27,7 @@ public class ReportGenerator {
 		JPanel panel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		placeComponents(panel, buttonPanel);
-		frame.add(m1, BorderLayout.NORTH);
+		frame.add(mb, BorderLayout.NORTH);
 		frame.add(panel, BorderLayout.CENTER);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 
