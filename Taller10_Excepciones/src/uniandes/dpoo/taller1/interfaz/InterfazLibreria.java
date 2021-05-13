@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -145,6 +146,14 @@ public class InterfazLibreria extends JFrame
 		panelBotones = new PanelBotones(this);
 		panelAbajo.add(panelBotones, BorderLayout.CENTER);
 		add(panelAbajo, BorderLayout.SOUTH);
+		
+	    JButton b =new JButton("Renombrar categoria");  
+	    b.addActionListener(new ActionListener(){  
+	    	public void actionPerformed(ActionEvent e){  
+	    	          	// Implementar función renombrarCategoria de la Libreria.
+	    	        }  
+	    	    });  
+	    add(b, BorderLayout.WEST);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Librería");

@@ -129,7 +129,7 @@ public class Libreria {
 
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivoLibros));
 		String linea = br.readLine(); // Ignorar la primera línea porque tiene los títulos:
-										// Titulo,Autor,Calificacion,Categoria,Portada,Ancho,Alto
+		// Titulo,Autor,Calificacion,Categoria,Portada,Ancho,Alto
 
 		linea = br.readLine();
 		while (linea != null) {
@@ -137,8 +137,24 @@ public class Libreria {
 			String elTitulo = partes[0];
 			String elAutor = partes[1];
 			double laCalificacion = Double.parseDouble(partes[2]);
+
 			String nombreCategoria = partes[3];
 			Categoria laCategoria = buscarCategoria(nombreCategoria);
+			// Agregar categorías que no existen
+			if (laCategoria == null) {
+				Categoria nueva = new Categoria(nombreCategoria, false);
+
+				Categoria[] nuevasCategorias = new Categoria[this.categorias.length + 1];
+				for (int i = 0; i < this.categorias.length; i++)
+					nuevasCategorias[i] = this.categorias[i];
+
+				nuevasCategorias[this.categorias.length] = nueva;
+				System.out.println("Se agregó la nueva categoria " + nombreCategoria);
+
+				this.categorias = nuevasCategorias;
+				laCategoria = nueva;
+			}
+
 			String archivoPortada = partes[4];
 			int ancho = Integer.parseInt(partes[5]);
 			int alto = Integer.parseInt(partes[6]);
@@ -171,7 +187,7 @@ public class Libreria {
 		Categoria categoriaBuscada = null;
 
 		int i = 0;
-		while (i < this.categorias.length && categoriaBuscada == null) { //Changed .equals(null) -> == null
+		while (i < this.categorias.length && categoriaBuscada == null) { // Changed .equals(null) -> == null
 			Categoria actual = this.categorias[i];
 			if (actual.darNombre().equals(nombreCategoria)) {
 				categoriaBuscada = actual;
@@ -181,6 +197,28 @@ public class Libreria {
 		}
 
 		return categoriaBuscada;
+	}
+
+	public void renombrarCategoria(String nuevoNombre, String viejoNombre) {
+		buscarCategoria(viejoNombre).setNombre(nuevoNombre);
+	}
+
+	public void eliminarLibros(String nombres) {
+		String[] autores = nombres.split(",");
+		String autor = "";
+
+		try {
+			for (int i = 0; i < autores.length; i++) {
+				autor = autores[i];
+				ArrayList<Libro> librosActual = buscarLibrosAutor(autor);
+				if (librosActual.size() > 0) {
+					librosActual = new ArrayList<Libro>();
+				}
+			}
+		} catch (Exception ex) {
+			System.out.println("No se encontró a" + autor);
+			ex.printStackTrace();
+		}
 	}
 
 	/**
@@ -286,7 +324,7 @@ public class Libreria {
 			suma += libro.darCalificacion();
 			cantidad_libros += 1;
 		}
-		promedio = (cantidad_libros == 0) ? 0 : suma/cantidad_libros;
+		promedio = (cantidad_libros == 0) ? 0 : suma / cantidad_libros;
 		return promedio;
 	}
 
@@ -322,7 +360,7 @@ public class Libreria {
 		Categoria categoriaConMayorPromedio = null;
 
 		for (Categoria actual : this.categorias) {
-			if (categoriaConMayorPromedio == null) { //Changed to "== null"
+			if (categoriaConMayorPromedio == null) { // Changed to "== null"
 				categoriaConMayorPromedio = actual;
 			} else if (actual.calificacionPromedio() > categoriaConMayorPromedio.calificacionPromedio()) {
 				categoriaConMayorPromedio = actual;
@@ -360,7 +398,7 @@ public class Libreria {
 				if (categoria.hayLibroDeAutor(libro.darAutor())) {
 					cantidad_categorias_autor += 1;
 				}
-				
+
 				if (cantidad_categorias_autor >= 2) {
 					return true;
 				}
