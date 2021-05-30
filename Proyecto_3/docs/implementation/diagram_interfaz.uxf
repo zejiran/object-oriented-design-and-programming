@@ -1,0 +1,223 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>0</x><y>0</y><w>570</w><h>390</h></coordinates><panel_attributes>proyecto1.users
+--
+bg=#8DDC8B</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>660</x><y>0</y><w>760</w><h>600</h></coordinates><panel_attributes>proyecto1.subjectPlanner
+--
+bg=#72C2DD
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>50</x><y>590</y><w>1380</w><h>440</h></coordinates><panel_attributes>proyecto2.interfaz
+--
+bg=#D07171
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1290</x><y>120</y><w>100</w><h>40</h></coordinates><panel_attributes>subjectPeriod: 
+8, 16, 21 weeks.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>130</y><w>40</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>20;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>120</y><w>280</w><h>150</h></coordinates><panel_attributes>Pensum
+--
+- major: String
+- totalCredits: int
+--
++ addSemester(int: semNum, Semester theSem)
++ removeSemester(int semNum)
++ savePensum(String: filename)
++ setTotalCredits(int: numCredits)
++ setMajor(String: theMajor)
++ getMajor()
++ getTotalCredits()
+bg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1300</x><y>180</y><w>100</w><h>40</h></coordinates><panel_attributes>subjectID: 
+ISIS 1226, etc. 
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>170</y><w>50</w><h>50</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>30;30;20;30;20;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>330</y><w>160</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+r2=subjects
+m2=+
+m1=0
+m1pos=-20,10</panel_attributes><additional_attributes>20;70;20;20;140;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>680</x><y>330</y><w>160</w><h>50</h></coordinates><panel_attributes>The HashMap key is
+the semester number,
+and the value is a semester
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>400</y><w>300</w><h>130</h></coordinates><panel_attributes>Semester
+--
+- numCredits: int
+--
++ addSubject(Subject: theSubject)
++ removeSubject(Subject: theSubject)
++ setNumCredits(int: numCredits)
++ getNumCredits()
++ saveSemester(String: filename)
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>260</y><w>220</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
+m1=+
+m2=1
+r1=pensum: HashMap&lt;int, Semester&gt;
+r1pos=-190,-50
+
+</panel_attributes><additional_attributes>190;140;190;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>87</y><w>190</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/User/
+--
+# login: String
+--
+/# abstract saveUser()/
+/# abstract generateGradeReport()/
+/# abstract ableToGraduate()/
+# setLogin(String: theLogin)
+# getLogin()
+
+bg=#0CA707
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>86</x><y>690</y><w>210</w><h>130</h></coordinates><panel_attributes>StudentProgress
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>60</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=extends
+m1pos=-35,-50</panel_attributes><additional_attributes>20;50;50;50;50;10;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>26</y><w>310</w><h>90</h></coordinates><panel_attributes>AcademicCoordinator
+--
+--
++ loadInformation(String: filename)
++ loadManualInformation(Student: st, int: g, Subject: su)
++ editStudent(Student: theStudent)
++ createSubject(Subject: theSubject)
+
+bg=#0CA707</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>106</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+r1=student
+r1pos=-50,-10
+m1=0..1
+
+
+
+</panel_attributes><additional_attributes>50;90;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>45</x><y>220</y><w>90</w><h>390</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=actualUser
+</panel_attributes><additional_attributes>10;10;10;290;10;370</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>192</y><w>190</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+r1=0
+m2=1
+m1=myPensum
+m1pos=5,0
+r1pos=5,0
+</panel_attributes><additional_attributes>10;50;100;50;100;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>26</y><w>220</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+preRequirements: LinkedList&lt;Subject&gt;
+m1=*
+m1pos=0,5</panel_attributes><additional_attributes>140;60;140;20;70;20;70;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1019</x><y>86</y><w>260</w><h>510</h></coordinates><panel_attributes>Subject
+--
+- name: String
+- credits: int
+- period: int
+- desciption: String
+- subjectID: String
+- majorRestrictions: LinkedList&lt;String&gt;
+--
++ addPreRequirement(Subject: theSubject)
++ addCoRequirement(Subject: theSubject)
++ addMajorRestriction(String: theMajor)
+
++ removePreRequirement(Subject: theSubject)
++ removeCoRequirement(Subject: theSubject)
++ removeMajorRestriction(String: degree)
+
++ setName(String: theName)
++ setCredits(int: theCredits)
++ setPeriod(int: thePeriod)
++ setSubjectID(String: theID)
++ setDescription(String: theDescription)
+
++ getName()
++ getCredits()
++ getPeriod()
++ getSubjectID()
++ getDescription()
++ getPreRequirements()
++ getCoRequirements()
++ getPreRequirement(Subject: theReq)
++ getCoRequirement(Subject: theReq)
++ hasRestriction(String: majorName)
+
++ saveSubject(String: filename)
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1190</x><y>16</y><w>230</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+r2=coRequirements: LinkedList&lt;Subject&gt;
+r2pos=-100,-55
+m1=*
+m1pos=0,5</panel_attributes><additional_attributes>30;70;30;30;120;30;120;80;90;80</additional_attributes></element><element><id>UMLNote</id><coordinates><x>380</x><y>126</y><w>170</w><h>60</h></coordinates><panel_attributes>An Academic Coordinator is
+able only to  edit 1 student at
+a time
+bg=#0CA707</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>136</y><w>80</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-
+m1=extends
+m1pos=-5,-20</panel_attributes><additional_attributes>10;20;50;20;50;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>196</y><w>330</w><h>180</h></coordinates><panel_attributes>Student
+--
+- major: String
+--
++ createPlan(String: planName)
++ addSubject(Subject: theSubject)
++ removeSubject(Subject: theSubject)
++ planSubject(Subject: theSubject, String: planName)
++ removePlanSubject(Subject: theSubject, String: planName)
++ setMajor(String: theMajor)
++ getMajor()
++ getGrade(Subject: theSubject)
++ canEnrollSubject(Subject: theSubject)
+bg=#0CA707</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>76</y><w>500</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+r1=0
+r1pos=5,0
+m1=academicGrades: HashMap&lt;Subject, int&gt;
+m1pos=100,-120
+r2=*</panel_attributes><additional_attributes>10;140;70;140;70;20;480;20</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>276</y><w>170</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=semesterPlan
+m2pos=-55,-50
+r2=*
+r1=*
+r1pos=5,0</panel_attributes><additional_attributes>10;20;80;20;80;170;150;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>690</y><w>210</w><h>130</h></coordinates><panel_attributes>ReportGenerator
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>690</y><w>210</w><h>130</h></coordinates><panel_attributes>PensumLoader
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>976</x><y>690</y><w>210</w><h>130</h></coordinates><panel_attributes>Login
+--
+--
++ placeComponents(JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>86</x><y>880</y><w>210</w><h>130</h></coordinates><panel_attributes>Inicio
+--
+--
++ placeComponents(JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>316</x><y>880</y><w>210</w><h>130</h></coordinates><panel_attributes>CoursesLoader
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>536</x><y>880</y><w>210</w><h>130</h></coordinates><panel_attributes>CoursesDashboard
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>880</y><w>210</w><h>130</h></coordinates><panel_attributes>CoursePlanning
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1196</x><y>880</y><w>210</w><h>130</h></coordinates><panel_attributes>CoordinatorDashboard
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>976</x><y>880</y><w>210</w><h>130</h></coordinates><panel_attributes>CourseOffer
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>316</x><y>690</y><w>210</w><h>130</h></coordinates><panel_attributes>StudentDashboard
+--
+--
++ placeComponents(JPanel, JPanel)
+bg=red
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
