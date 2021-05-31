@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import static org.junit.Assert.*;
 
 public class TestAlmacenException {
+	
 	AlmacenException exception;
 
 	@Test

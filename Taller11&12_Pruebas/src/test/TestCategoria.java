@@ -12,6 +12,7 @@ import uniandes.cupi2.almacen.mundo.Categoria;
  * Representa una categor�a del almac�n.
  */
 public class TestCategoria {
+	
 	Categoria category = new Categoria("mock id", "mock name");
 
 	@Test

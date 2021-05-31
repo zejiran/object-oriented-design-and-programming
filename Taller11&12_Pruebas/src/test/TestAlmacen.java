@@ -16,6 +16,7 @@ package test;
 //import uniandes.cupi2.almacen.mundo.Categoria;
 
 public class TestAlmacen {
+	
 	// Categoria category;
 	// Almacen almacen = new Almacen(new File("datos.txt"));
 	//
